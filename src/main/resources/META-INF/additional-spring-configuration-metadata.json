@@ -1,0 +1,32 @@
+{"properties": [
+  {
+    "name": "bot_key",
+    "type": "java.lang.String",
+    "description": "A description for 'bot_key'"
+  },
+  {
+    "name": "spring.telegram.bot.key",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.telegram.bot.key'"
+  },
+  {
+    "name": "spring.telegram.base.chat.parameter",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.telegram.base.chat.parameter'"
+  },
+  {
+    "name": "spring.telegram.channel",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.telegram.channel'"
+  },
+  {
+    "name": "spring.telegram.baseurl",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.telegram.baseurl'"
+  },
+  {
+    "name": "spring.telegram.chatid",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.telegram.chatid'"
+  }
+]}
