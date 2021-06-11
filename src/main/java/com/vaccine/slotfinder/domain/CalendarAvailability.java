@@ -3,11 +3,15 @@ package com.vaccine.slotfinder.domain;
 import java.sql.Timestamp;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Calendar Availability bean
  * @author 
  *
  */
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CalendarAvailability {
 
 	private Integer center_id;

@@ -2,11 +2,15 @@ package com.vaccine.slotfinder.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Response bean to collect API response
  * @author 
  *
  */
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SlotFinderResponse {
 	
 	private List<Center> centers;

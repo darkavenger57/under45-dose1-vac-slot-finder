@@ -1,5 +1,8 @@
 package com.vaccine.slotfinder.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ReportingData {
 	
 	private String available_date;

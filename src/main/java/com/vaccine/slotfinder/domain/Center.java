@@ -3,11 +3,15 @@ package com.vaccine.slotfinder.domain;
 import java.sql.Timestamp;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Center bean to collect basic center information
  * @author 
  *
  */
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Center {
 	
 	private Integer center_id;
