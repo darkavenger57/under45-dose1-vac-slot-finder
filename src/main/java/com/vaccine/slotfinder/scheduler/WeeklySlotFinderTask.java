@@ -72,7 +72,7 @@ public class WeeklySlotFinderTask {
 	 * Run the Slot Finder Task every 55th second
 	 */
     
-   // @Scheduled(initialDelay = 5000,fixedDelay = 52000)
+    @Scheduled(initialDelay = 5000,fixedDelay = 52000)
 	public void invokeSlotFinder() {
 		
 		List<Center> centerList = getCenterList();
