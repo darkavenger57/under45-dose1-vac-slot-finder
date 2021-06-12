@@ -1,7 +1,6 @@
 package com.vaccine.slotfinder.util;
 
 import java.util.function.Predicate;
-
 import com.vaccine.slotfinder.domain.CalendarAvailability;
 
 /**

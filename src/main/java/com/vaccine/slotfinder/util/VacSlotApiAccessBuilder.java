@@ -4,14 +4,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vaccine.slotfinder.domain.Center;
 import com.vaccine.slotfinder.domain.PinCodes;
@@ -80,19 +78,21 @@ public class VacSlotApiAccessBuilder {
 			
 		}
 		
-		//SlotFinderResponse slotFinderResponse = loadFromFile();
-		//masterCenterList.addAll(slotFinderResponse.getCenters());
 		LOGGER.info("Cowin API invoked for Pincodes : "+PinCodes.pinCodes);
 		return masterCenterList; 
 	}
 	
+	/**
+	 * Test method to load from file
+	 * @return
+	 */
 	private SlotFinderResponse loadFromFile() {
 		
 		SlotFinderResponse slotFinderResponse = null;
 		ObjectMapper objectMapper = new ObjectMapper();
 		
 		try {
-			File file = new ClassPathResource("response.json").getFile();
+			File file = new ClassPathResource("sample-response.json").getFile();
 			slotFinderResponse = objectMapper.readValue(file, SlotFinderResponse.class);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

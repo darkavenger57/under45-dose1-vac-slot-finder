@@ -2,7 +2,6 @@ package com.vaccine.slotfinder.dao;
 
 import java.util.List;
 import java.util.Map;
-
 import com.vaccine.slotfinder.domain.CalendarAvailability;
 import com.vaccine.slotfinder.domain.ReportingData;
 
