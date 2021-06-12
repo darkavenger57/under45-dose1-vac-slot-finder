@@ -1,4 +1,4 @@
-# vac-slot-finder
+# under45-dose1-vac-slot-finder
 Under 45 Dose 1 COVID vaccine Slot finder using COWIN public API's.
 
 Simple Java Spring boot implementation to find vaccination slots using COWIN public API's (via API Setu)
