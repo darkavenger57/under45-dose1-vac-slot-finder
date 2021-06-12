@@ -72,7 +72,7 @@ public class WeeklySlotFinderTask {
 	 * Run the Slot Finder Task every 55th second
 	 */
     
-    @Scheduled(initialDelay = 5000,fixedDelay = 55000)
+   // @Scheduled(initialDelay = 5000,fixedDelay = 52000)
 	public void invokeSlotFinder() {
 		
 		List<Center> centerList = getCenterList();
@@ -102,6 +102,7 @@ public class WeeklySlotFinderTask {
 		//printCacheKeys();
 		
 		for(Center c: centerList) {
+			c.getSessions().forEach(ca -> LOGGER.debug(ca.toString()));
 			List<CalendarAvailability> filteredList = getUnder45AndDoseCapacityFilteredList(c);
 			filteredList.forEach(ca-> {
 				if(precheckOk(ca)) {
@@ -145,19 +146,10 @@ public class WeeklySlotFinderTask {
 				LOGGER.debug("Excluded[Repeat Data in less than 8 min] Center id :"+ ca.getCenter_id()+" : "+ ca.getDate()+" : "+ca.getName());
 				return false;
 			}
-			if(ca.getVaccine().equals("COVISHIELD") && ca.getAvailable_capacity_dose2()>0) {
-				LOGGER.debug("Excluded [COVISHIELD and Dose2] Center id : "+ ca.getCenter_id()+" : "+ ca.getDate()+" : "+ca.getName());
-				return false;
-			}
 			cache.put(ca.getCenter_id(), ca.toString());
 			LOGGER.info("Inserted into Cache : " + ca.getCenter_id());
 			return true;
-			
-		} else if (ca.getVaccine().equals("COVISHIELD") && ca.getAvailable_capacity_dose2()>0){
-			LOGGER.debug(" Excluded[COVISHIELD and Dose2] Center id : "+ ca.getCenter_id()+" : "+ ca.getDate()+" : "+ca.getName());
-			return false;
-		}
-		
+		} 
 		cache.put(ca.getCenter_id(), ca.toString());
 		LOGGER.info("Inserted (first time) into cache: " + ca.getCenter_id());
 		return true;

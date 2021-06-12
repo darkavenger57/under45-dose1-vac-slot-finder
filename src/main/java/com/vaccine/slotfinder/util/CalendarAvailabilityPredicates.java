@@ -16,7 +16,7 @@ public class CalendarAvailabilityPredicates {
 	 * @return
 	 */
 	public static Predicate<CalendarAvailability> isUnder45() {
-		return p -> p.getMin_age_limit()==18;
+		return p -> p.getMin_age_limit() == 18;
 	}
 	
 	/**
@@ -24,14 +24,6 @@ public class CalendarAvailabilityPredicates {
 	 * @return
 	 */
 	public static Predicate<CalendarAvailability> isDoseCapacityGreaterThanLimit() {
-		return p -> p.getAvailable_capacity_dose1()>DOSE_LIMIT_CHECK || p.getAvailable_capacity_dose2()>DOSE_LIMIT_CHECK ;
-	}
-	
-	/**
-	 * Predicate to check if dose is 2nd and COVISHIELD
-	 * @return
-	 */
-	public static Predicate<CalendarAvailability> isCoviShieldAndSecondDose() {
-		return p -> p.getVaccine().equals("COVISHIELD") && p.getAvailable_capacity_dose2()>1;
+		return (p -> p.getAvailable_capacity_dose1() > DOSE_LIMIT_CHECK ) ;
 	}
 }
