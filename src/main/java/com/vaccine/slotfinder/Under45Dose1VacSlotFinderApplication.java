@@ -19,6 +19,6 @@ public class Under45Dose1VacSlotFinderApplication  {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Under45Dose1VacSlotFinderApplication.class, args);
-		LOGGER.info("----- Started Vac Slot Finder -----");
+		LOGGER.info("----- Started Under 45 Dose1 Vac Slot Finder -----");
 	}
 }
