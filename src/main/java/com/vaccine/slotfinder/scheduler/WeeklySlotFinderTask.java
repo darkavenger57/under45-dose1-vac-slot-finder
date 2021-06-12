@@ -156,15 +156,14 @@ public class WeeklySlotFinderTask {
 	}
 	
 	/**
-	 * Get under45 and dose 1>0 filtered list
+	 * Get under45 and dose 1 > Limit filtered list
 	 * @param c
 	 * @return
 	 */
 	private List<CalendarAvailability> getUnder45AndDoseCapacityFilteredList(Center c) {
 		
 		List<CalendarAvailability> filteredList = c.getSessions().stream()
-				.filter(CalendarAvailabilityPredicates.isUnder45().and
-						(CalendarAvailabilityPredicates.isDoseCapacityGreaterThanLimit())).collect(Collectors.toList());
+				.filter(CalendarAvailabilityPredicates.isUnder45AndDose1Available()).collect(Collectors.toList());
 		
 		return filteredList;
 	}
