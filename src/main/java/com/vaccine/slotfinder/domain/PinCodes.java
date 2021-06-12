@@ -12,8 +12,8 @@ import java.util.List;
 public class PinCodes {
 	
 	/** List of Pune pincodes with typical hospitals having doses available **/
-	public static List<String> pinCodes = Arrays.asList("411001","411004","411007","411018","411038","411057","411040","412115",
-			"411028","411006","411045","411005","411058","411040","411013","411011");
+	public static List<String> pinCodes = Arrays.asList("411001","411004","411007","411038","411057","411040","412115",
+			"411028","411006","411005","411058","411040","411013","411011");
 
 	
 

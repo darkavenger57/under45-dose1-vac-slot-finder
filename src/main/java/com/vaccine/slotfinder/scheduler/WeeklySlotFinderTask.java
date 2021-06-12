@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -72,7 +73,7 @@ public class WeeklySlotFinderTask {
 	 * Run the Slot Finder Task every 55th second
 	 */
     
-    @Scheduled(initialDelay = 5000,fixedDelay = 50000)
+    @Scheduled(initialDelay = 4000,fixedDelay = 42000)
 	public void invokeSlotFinder() {
 		
 		List<Center> centerList = getCenterList();
@@ -99,8 +100,6 @@ public class WeeklySlotFinderTask {
 	 */
 	private void processCenterList(List<Center> centerList) {
 		
-		//printCacheKeys();
-		
 		for(Center c: centerList) {
 			c.getSessions().forEach(ca -> LOGGER.debug(ca.toString()));
 			List<CalendarAvailability> filteredList = getUnder45AndDoseCapacityFilteredList(c);
@@ -123,6 +122,7 @@ public class WeeklySlotFinderTask {
 	 * @param c
 	 * @param ca
 	 */
+	@Async
 	private void saveToDb(CalendarAvailability ca) {
 		under45DataService.saveSlotDetectedInfo(ca);
 		LOGGER.info("Saved to db : "+ ca.getCenter_id());
