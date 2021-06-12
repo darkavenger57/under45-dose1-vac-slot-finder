@@ -12,7 +12,7 @@ import com.vaccine.slotfinder.scheduler.WeeklySlotFinderTask;
  * @author 
  *
  */
-@SpringBootApplication
+//@SpringBootApplication
 public class TestDBRunnerApplication implements CommandLineRunner{
 
 	//@Autowired

@@ -32,7 +32,7 @@ public class DailyMiniSummaryTaskScheduler {
 	/**
 	 * Cron trigger to send mini summary telegram message at 21:00 every day
 	 */
-	@Scheduled(cron = "0 10 21 * * *")
+	//@Scheduled(cron = "0 10 21 * * *")
 	public void sendDailyMiniSummary() {
 	 
 		String date = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
