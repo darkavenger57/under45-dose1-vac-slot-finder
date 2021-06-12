@@ -8,7 +8,7 @@ Note :- Rate Limit for COWIN API's : 100 API calls in span of 5 mins per IP
 <b>Features</b> :- <br>
 a) Can query 15 pincodes in span of 55 secs. More can be added if you plan to run on different server(IP) <br>
 b) Stores slot find information in a Postgre database table for querying stats.<br>
-   [ You can think of storing it in HSQLDB also ]
+   [ You can think of storing it in HSQLDB also ]<br>
 c) Uses Amcharts and JSP to view Graphical representation of a particular day's statistics<br>
 d) Sends alerts via Telegram. Note :- You will have to configure telegram bot and provide details in application.properties<br>
 e) Uncomment the @Scheduling annotation on WeeklySlotFinderTask.java and you would start recieving daily summary at 21:00<br>
