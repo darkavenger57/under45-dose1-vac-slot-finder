@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.vaccine.slotfinder</groupId>
-	<artifactId>vac-slot-finder</artifactId>
+	<artifactId>under45-dose1-vac-slot-finder</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>vac-slot-finder</name>
-	<description>Vaccine Slot Finder</description>
+	<name>under45-dose1-vac-slot-finder</name>
+	<description>Under 45 Dose 1 Vaccine Slot Finder</description>
 	<packaging>jar</packaging>
 	<properties>
 		<java.version>1.8</java.version>

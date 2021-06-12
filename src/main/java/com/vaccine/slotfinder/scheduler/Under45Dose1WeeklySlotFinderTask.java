@@ -34,10 +34,10 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Component
-public class WeeklySlotFinderTask {
+public class Under45Dose1WeeklySlotFinderTask {
 	
 	/** Logger **/
-	private static final Logger LOGGER = LoggerFactory.getLogger(WeeklySlotFinderTask.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Under45Dose1WeeklySlotFinderTask.class);
 	
 	/** Base URL to be utilized **/
 	private String BASE_URL="https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?";
@@ -101,7 +101,7 @@ public class WeeklySlotFinderTask {
 	private void processCenterList(List<Center> centerList) {
 		
 		for(Center c: centerList) {
-			c.getSessions().forEach(ca -> LOGGER.debug(ca.toString()));
+			//c.getSessions().forEach(ca -> LOGGER.debug(ca.toString()));
 			List<CalendarAvailability> filteredList = getUnder45AndDoseCapacityFilteredList(c);
 			filteredList.forEach(ca-> {
 				if(precheckOk(ca)) {
@@ -109,9 +109,6 @@ public class WeeklySlotFinderTask {
 					telegramNotifier.sendMessage(ca.toString());
 					saveToDb(ca);
 					LOGGER.info(ca.toString()+"\n");
-				}
-				else {
-					LOGGER.debug("Pre Check NOT OK *** : "+ ca.getCenter_id());
 				}
 			});
 		}
@@ -130,8 +127,8 @@ public class WeeklySlotFinderTask {
 	
 	/**
 	 * Perform pre-check :-
-	 * a) Already in cache and vac==covisheild and 2nd dose then exclude(can be enabled later)
-	 * b) Entries are put in cache with eviction time 10 mins so the available doses of qty 1 are excluded(minor ones)
+	 * Entries are put in cache with eviction time 10 mins so the available doses of qty 1 are excluded
+	 * Basically those that are not being consumed
 	 * @param ca
 	 * @return
 	 */
@@ -171,6 +168,7 @@ public class WeeklySlotFinderTask {
 	/**
 	 * Print Cache keys
 	 */
+	@SuppressWarnings("unused")
 	private void printCacheKeys() {
 		cache.asMap().forEach((k, v) -> 
 	    LOGGER.info("Cache Key = " + k ));

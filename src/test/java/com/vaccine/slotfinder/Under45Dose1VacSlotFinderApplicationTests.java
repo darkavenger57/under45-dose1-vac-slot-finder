@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.vaccine.slotfinder.controller.Under45JabStatsJspController;
 
 @SpringBootTest
-class VacSlotFinderApplicationTests {
+class Under45Dose1VacSlotFinderApplicationTests {
 
 	@Autowired
 	private Under45JabStatsJspController under45JabStatsJspController;

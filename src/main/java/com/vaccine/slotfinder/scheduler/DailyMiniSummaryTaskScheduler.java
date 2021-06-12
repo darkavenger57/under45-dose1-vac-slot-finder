@@ -19,7 +19,7 @@ import com.vaccine.slotfinder.util.TelegramNotifier;
 public class DailyMiniSummaryTaskScheduler {
 	
 	/** Logger **/
-	private static final Logger LOGGER = LoggerFactory.getLogger(WeeklySlotFinderTask.class);	
+	private static final Logger LOGGER = LoggerFactory.getLogger(Under45Dose1WeeklySlotFinderTask.class);	
 	
 	/** Data Service **/
 	@Autowired

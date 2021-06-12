@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import com.vaccine.slotfinder.controller.Under45JabStatsJspController;
 
 /**
  * Basic Spring Boot App
@@ -14,12 +13,12 @@ import com.vaccine.slotfinder.controller.Under45JabStatsJspController;
  */
 @SpringBootApplication
 @EnableScheduling 
-public class VacSlotFinderApplication  {
+public class Under45Dose1VacSlotFinderApplication  {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(Under45JabStatsJspController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Under45Dose1VacSlotFinderApplication.class);
 	
 	public static void main(String[] args) {
-		SpringApplication.run(VacSlotFinderApplication.class, args);
+		SpringApplication.run(Under45Dose1VacSlotFinderApplication.class, args);
 		LOGGER.info("----- Started Vac Slot Finder -----");
 	}
 }
