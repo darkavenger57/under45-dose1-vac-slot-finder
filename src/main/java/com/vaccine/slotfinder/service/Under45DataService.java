@@ -27,7 +27,7 @@ public class Under45DataService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Under45DataService.class);
 	
 	/**
-	 * Gets Reporting Data for a date(slot detection date) and age
+	 * Gets Reporting Stats for a date(slot detection date, availability date plotting ) 
 	 * @param date
 	 * @param age
 	 * @return
@@ -35,6 +35,17 @@ public class Under45DataService {
 	public List<ReportingData> getDailyStatsData(String date,String dose) {
 		LOGGER.info("Inside Daily Stats Reporting Service ");
 		return jdbcSlotFinderDaoRepository.findByDateAndDose(date,dose);
+	}
+	
+	/**
+	 * Get Daily Reporting Stats based for a date based on time slots 
+	 * @param date
+	 * @param dose
+	 * @return
+	 */
+	public List<ReportingData> getDailyStatsDataByTimeslot(String date,String dose) {
+		LOGGER.info("Inside Daily Stats Reporting Service ");
+		return jdbcSlotFinderDaoRepository.findByDateAndDoseTimeSlot(date,dose);
 	}
 	
 	/**

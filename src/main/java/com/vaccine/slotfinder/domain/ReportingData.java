@@ -11,7 +11,14 @@ public class ReportingData {
 	private String pincode;
 	private Integer time_of_day;
 	private String dose;
+	private String time_of_day_str;
 	
+	public String getTime_of_day_str() {
+		return time_of_day_str;
+	}
+	public void setTime_of_day_str(String time_of_day_str) {
+		this.time_of_day_str = time_of_day_str;
+	}
 	public String getAvailable_date() {
 		return available_date;
 	}

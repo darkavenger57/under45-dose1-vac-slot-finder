@@ -71,10 +71,36 @@ public class PostgreSqlJdbcSlotFinderDaoRepository implements SlotFinderDaoRepos
     	SqlParameterSource parameters = new MapSqlParameterSource()
 				.addValue("reporting_date", date);
 		
-    	List<ReportingData> dataList = namedParameterJdbcTemplate.query(sql, parameters, new ReportingDataMapper());
+    	List<ReportingData> dataList = namedParameterJdbcTemplate.query(sql, parameters, new ReportingDataMapper(false));
     	LOGGER.info("Size : "+ dataList.size());
     	return dataList;
     }
+    
+	/*
+	* Gets Daily Time Slot data
+	*/
+   @Override
+   public List<ReportingData> findByDateAndDoseTimeSlot(String date,String dose) {
+   	
+   	String doseFragment = dose.equals("dose1")?"available_capacity_dose1":"available_capacity_dose2";
+   	
+   	
+   	String sql= "select  to_char(to_date(available_date,'dd-MM-yyyy'),'dd-Mon-yyyy') as available_date,name as center_name, "+
+		"min_age_limit as age,vaccine,pincode, "+
+		"to_char(detected_date_time,'HH24:mm:ss') as time_of_day_str "+
+		",available_capacity_dose1 as dose "+
+		"from calendar_availability where "+
+		"to_char(detected_date_time,'DD-MM-YYYY')=:reporting_date and min_age_limit=18 "+ 
+		"and "+doseFragment+" > 1 "+
+		 "order by time_of_day_str ";
+   	
+   	SqlParameterSource parameters = new MapSqlParameterSource()
+				.addValue("reporting_date", date);
+		
+   	List<ReportingData> dataList = namedParameterJdbcTemplate.query(sql, parameters, new ReportingDataMapper(true));
+   	LOGGER.info("Size : "+ dataList.size());
+   	return dataList;
+   }
     
     /**
      * Gets daily Summarized data
@@ -126,6 +152,12 @@ public class PostgreSqlJdbcSlotFinderDaoRepository implements SlotFinderDaoRepos
      *
      */
     class ReportingDataMapper implements RowMapper<ReportingData> {
+    	
+    	boolean timeOfDayStr = false;
+    	
+    	ReportingDataMapper(boolean timeOfDayFlg) {
+    		this.timeOfDayStr = timeOfDayFlg;
+    	}
 
     	@Override
     	public ReportingData mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -136,7 +168,12 @@ public class PostgreSqlJdbcSlotFinderDaoRepository implements SlotFinderDaoRepos
     		rd.setCenter_name(rs.getString("center_name"));
     		rd.setDose(Integer.toString(rs.getInt("dose")));
     		rd.setPincode(Integer.toString(rs.getInt("pincode")));
-    		rd.setTime_of_day(rs.getInt("time_of_day"));
+    		if(!timeOfDayStr) {
+    			rd.setTime_of_day(rs.getInt("time_of_day"));
+    		}
+    		else {
+    			rd.setTime_of_day_str(rs.getString("time_of_day_str"));
+    		}
     			
      		return rd;
     	}

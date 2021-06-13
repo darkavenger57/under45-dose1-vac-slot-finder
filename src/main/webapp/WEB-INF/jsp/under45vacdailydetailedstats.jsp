@@ -18,7 +18,7 @@
     %>
    
     <h3>
-    	Under 45 Vaccine availability detected Stats <br> Dose : <u><%=dose%></u>
+    	Under 45 Vaccine availability daily detailed Stats <br> Dose : <u><%=dose%></u>
     </h3>
    	
     <!-- Resources -->

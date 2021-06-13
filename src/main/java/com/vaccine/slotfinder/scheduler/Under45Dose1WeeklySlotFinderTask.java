@@ -108,7 +108,7 @@ public class Under45Dose1WeeklySlotFinderTask {
 			filteredList.forEach(ca-> {
 				if(precheckOk(ca)) {
 					LOGGER.info("Pre Check OK");
-					telegramNotifier.sendMessage(ca.toString());
+					//telegramNotifier.sendMessage(ca.toString());
 					saveToDb(ca);
 					LOGGER.info(ca.toString()+"\n");
 				}

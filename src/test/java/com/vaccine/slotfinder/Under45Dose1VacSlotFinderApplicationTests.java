@@ -11,12 +11,12 @@ import com.vaccine.slotfinder.controller.Under45JabStatsJspController;
 @SpringBootTest
 class Under45Dose1VacSlotFinderApplicationTests {
 
-	@Autowired
+	/*@Autowired
 	private Under45JabStatsJspController under45JabStatsJspController;
 
 	@Test
 	public void contextLoads() throws Exception {
 		assertThat(under45JabStatsJspController).isNotNull();
-	}
+	}*/
 
 }

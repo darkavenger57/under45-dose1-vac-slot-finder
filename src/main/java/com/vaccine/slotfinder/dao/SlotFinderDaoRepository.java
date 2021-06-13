@@ -26,6 +26,8 @@ public interface SlotFinderDaoRepository {
 	 */
 	public List<ReportingData> findByDateAndDose(String date,String dose);
 	
+	public List<ReportingData> findByDateAndDoseTimeSlot(String date,String dose);
+	
 	
 	/**
 	 * Gets Daily Summary data

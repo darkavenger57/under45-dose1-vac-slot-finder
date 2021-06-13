@@ -39,8 +39,8 @@ public class Under45JabStatsJspController {
 	 * @param map
 	 * @return
 	 */
-	@RequestMapping(value="/under45stats/daily", method=RequestMethod.GET,produces = "application/json")
-	public String getUnder45VacSlotsDailyStats(@RequestParam String date, @RequestParam String dose,Model map) {
+	@RequestMapping(value="/under45stats/daily/detailedstats", method=RequestMethod.GET,produces = "application/json")
+	public String getUnder45VacSlotsDailyDetailedStats(@RequestParam String date, @RequestParam String dose,Model map) {
 		try {
 				Date dt = new SimpleDateFormat("dd-MMM-yyyy").parse(date);
 				
@@ -52,7 +52,30 @@ public class Under45JabStatsJspController {
 				String data = mapper.writeValueAsString(dataList);
 				map.addAttribute("data",data);
 			
-				return "under45vacdailystats2";
+				return "under45vacdailydetailedstats";
+			}
+			return "error";
+		}
+		catch(ParseException | JsonProcessingException dtp) {
+			LOGGER.error(dtp.getMessage());
+			return "error";
+		}
+	}
+	
+	@RequestMapping(value="/under45stats/daily/timeslotstats", method=RequestMethod.GET,produces = "application/json")
+	public String getUnder45VacSlotsDailyTimeSlotStats(@RequestParam String date, @RequestParam String dose,Model map) {
+		try {
+				Date dt = new SimpleDateFormat("dd-MMM-yyyy").parse(date);
+				
+				if(dose.equals("dose1") || dose.equals("dose2")) {
+				List<ReportingData> dataList = dataService.getDailyStatsDataByTimeslot
+						(new SimpleDateFormat("dd-MM-yyyy").format(dt),dose);
+			
+				ObjectMapper mapper = new ObjectMapper();
+				String data = mapper.writeValueAsString(dataList);
+				map.addAttribute("data",data);
+			
+				return "under45vacdailytimeslotstats";
 			}
 			return "error";
 		}
@@ -68,7 +91,7 @@ public class Under45JabStatsJspController {
 	 * @param dose
 	 * @return
 	 */
-	@RequestMapping(value="/under45stats/dailyminisummary", method=RequestMethod.GET,produces = "application/json")
+	@RequestMapping(value="/under45stats/daily/minisummary", method=RequestMethod.GET,produces = "application/json")
 	@ResponseBody
 	public String getUnder45VacSlotsMiniDailySummaryStats(@RequestParam String date, @RequestParam String dose) {
 		try {
