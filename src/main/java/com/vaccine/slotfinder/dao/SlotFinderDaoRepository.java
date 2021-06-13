@@ -33,5 +33,5 @@ public interface SlotFinderDaoRepository {
 	 * @param dose
 	 * @return
 	 */
-	public Map<String,List<Map<String,Object>>> queryDailyMiniSummaryStats(String date,String dose);
+	public Map<String,List<Map<String,Object>>> findByDateAndDoseDailyMiniSummary(String date,String dose);
 }

@@ -3,6 +3,11 @@ package com.vaccine.slotfinder.util;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Formats Data
+ * @author 
+ *
+ */
 public class DataFormatter {
 	
 	/**
@@ -17,7 +22,7 @@ public class DataFormatter {
     	StringBuilder strBldr = new StringBuilder();
     	strBldr.append("Mini Summary for today \n");
     	strBldr.append("----------------------\n");
-        strBldr.append("Top 3 time slots Of Day(24 hr format):\n");
+        strBldr.append("Top 3 time slots Of Day (24 hr format):\n");
         for(Map<String, Object> m1: timeOfDayList) {
         	Double hourOfDay = (Double) m1.get("hour_of_day");
         	Double nextHour = hourOfDay+1;
@@ -38,7 +43,4 @@ public class DataFormatter {
         }
         return strBldr.toString();
     }
-   
-	
-	
 }

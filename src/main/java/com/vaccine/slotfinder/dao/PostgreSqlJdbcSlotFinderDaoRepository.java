@@ -22,12 +22,12 @@ import com.vaccine.slotfinder.domain.ReportingData;
  *
  */
 @Repository
-public class JdbcSlotFinderDaoRepository implements SlotFinderDaoRepository {
+public class PostgreSqlJdbcSlotFinderDaoRepository implements SlotFinderDaoRepository {
 	
 	@Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(JdbcSlotFinderDaoRepository.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(PostgreSqlJdbcSlotFinderDaoRepository.class);
 
     @Override
     public void save(CalendarAvailability ca)  {
@@ -80,7 +80,7 @@ public class JdbcSlotFinderDaoRepository implements SlotFinderDaoRepository {
      * Gets daily Summarized data
      */
     @Override
-    public Map<String,List<Map<String,Object>>> queryDailyMiniSummaryStats(String date,String dose) {
+    public Map<String,List<Map<String,Object>>> findByDateAndDoseDailyMiniSummary(String date,String dose) {
     	
     	String doseFragment = dose.equals("dose1")?"available_capacity_dose1":"available_capacity_dose2";
     	

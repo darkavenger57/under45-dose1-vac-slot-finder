@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.vaccine.slotfinder.dao.JdbcSlotFinderDaoRepository;
+import com.vaccine.slotfinder.dao.PostgreSqlJdbcSlotFinderDaoRepository;
 import com.vaccine.slotfinder.domain.CalendarAvailability;
 import com.vaccine.slotfinder.domain.ReportingData;
 import com.vaccine.slotfinder.util.DataFormatter;
@@ -22,7 +22,7 @@ import com.vaccine.slotfinder.util.DataFormatter;
 public class Under45DataService {
 
 	@Autowired
-	private JdbcSlotFinderDaoRepository jdbcSlotFinderDaoRepository;
+	private PostgreSqlJdbcSlotFinderDaoRepository jdbcSlotFinderDaoRepository;
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(Under45DataService.class);
 	
@@ -53,7 +53,7 @@ public class Under45DataService {
 	 */
 	public String getMiniDailySummaryStatsData(String date,String dose) {
 		
-		Map<String,List<Map<String,Object>>> map = jdbcSlotFinderDaoRepository.queryDailyMiniSummaryStats(date, dose);
+		Map<String,List<Map<String,Object>>> map = jdbcSlotFinderDaoRepository.findByDateAndDoseDailyMiniSummary(date, dose);
 		
 		List<Map<String,Object>> timeOfDayList = map.get("TIMESLOT_OF_DAY");
         List<Map<String,Object>> pincodesDayList = map.get("PINCODE_OF_DAY");
