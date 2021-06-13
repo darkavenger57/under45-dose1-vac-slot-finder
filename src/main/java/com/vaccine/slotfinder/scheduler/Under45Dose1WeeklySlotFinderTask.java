@@ -71,12 +71,11 @@ public class Under45Dose1WeeklySlotFinderTask {
     	return cache;
     }
 	/**
-	 * Run the Slot Finder Task every 55th second
+	 * Run the Slot Finder Task every 20 second interval
+	 * The Cron expression can be put in a props file also
 	 */
     
-    //@Scheduled(initialDelay = 4000,fixedDelay = 30000)
-    
-    @Scheduled(cron = "*/30 * * * * *")
+    @Scheduled(cron = "*/20 * * * * *")
 	public void invokeSlotFinder() {
 		
 		List<Center> centerList = getCenterList();
@@ -122,7 +121,7 @@ public class Under45Dose1WeeklySlotFinderTask {
 	 * @param c
 	 * @param ca
 	 */
-	@Async
+	
 	private void saveToDb(CalendarAvailability ca) {
 		under45DataService.saveSlotDetectedInfo(ca);
 		LOGGER.info("Saved to db : "+ ca.getCenter_id());
