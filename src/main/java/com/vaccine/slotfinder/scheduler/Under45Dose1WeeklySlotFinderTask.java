@@ -22,6 +22,7 @@ import com.vaccine.slotfinder.service.Under45DataService;
 import com.vaccine.slotfinder.util.CalendarAvailabilityPredicates;
 import com.vaccine.slotfinder.util.TelegramNotifier;
 import com.vaccine.slotfinder.util.VacSlotApiAccessBuilder;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -73,7 +74,9 @@ public class Under45Dose1WeeklySlotFinderTask {
 	 * Run the Slot Finder Task every 55th second
 	 */
     
-    @Scheduled(initialDelay = 4000,fixedDelay = 42000)
+    //@Scheduled(initialDelay = 4000,fixedDelay = 30000)
+    
+    @Scheduled(cron = "*/30 * * * * *")
 	public void invokeSlotFinder() {
 		
 		List<Center> centerList = getCenterList();
@@ -101,7 +104,7 @@ public class Under45Dose1WeeklySlotFinderTask {
 	private void processCenterList(List<Center> centerList) {
 		
 		for(Center c: centerList) {
-			//c.getSessions().forEach(ca -> LOGGER.debug(ca.toString()));
+			c.getSessions().forEach(ca -> LOGGER.debug(ca.toString()));
 			List<CalendarAvailability> filteredList = getUnder45AndDoseCapacityFilteredList(c);
 			filteredList.forEach(ca-> {
 				if(precheckOk(ca)) {

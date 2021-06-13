@@ -72,12 +72,13 @@ public class VacSlotApiAccessBuilder {
 		for(String pincode :pincodes) {
 			String url = buildUrl(pincode,date,baseUrl);
 			ResponseEntity<SlotFinderResponse> response =  restTemplate.getForEntity(url, SlotFinderResponse.class);
+			LOGGER.debug("Cowin API URL invoked :"+ url);
 			if(response.getStatusCode().equals(HttpStatus.OK)) {
 				masterCenterList.addAll(response.getBody().getCenters());
 			}
 		}
 		
-		LOGGER.info("Cowin API invoked for Pincodes : "+PinCodes.pinCodes);
+		LOGGER.info("Cowin API invoked for Pincodes : "+PinCodes.pinCodes+"\n");
 		return masterCenterList; 
 	}
 	
