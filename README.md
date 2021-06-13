@@ -6,7 +6,7 @@ Uses database to store slot finds.
 Note :- Rate Limit for COWIN API's : 100 API calls in span of 5 mins per IP
 
 <b>Features</b> :- <br>
-a) Can query 15 pincodes in span of 55 secs. More can be added if you plan to run on different server(IP) <br>
+a) Can query 14 pincodes in 42 sec interval. More can be added if you plan to run on different server(IP) <br>
 b) Stores slot find information in a Postgre database table for querying stats.<br>
    [ You can think of storing it in HSQLDB also ]<br>
 c) Uses Amcharts and JSP to view Graphical representation of a particular day's statistics<br>
