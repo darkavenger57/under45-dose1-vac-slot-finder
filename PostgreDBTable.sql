@@ -8,7 +8,8 @@ CREATE TABLE IF NOT EXISTS public.calendar_availability
     min_age_limit integer NOT NULL,
     available_date character varying(100) COLLATE pg_catalog."default" NOT NULL,
     name character varying(2000) COLLATE pg_catalog."default",
-    pincode integer,
+    pincode integer NOT NULL,
     fee_type character varying(20) COLLATE pg_catalog."default",
-    detected_date_time timestamp without time zone
+    detected_date_time timestamp without time zone NOT NULL,
+    CONSTRAINT calendar_availability_pk PRIMARY KEY (center_id, pincode, detected_date_time)
 )
