@@ -77,6 +77,7 @@ public class Under45Dose1WeeklySlotFinderTask {
 	public void invokeSlotFinder() {
 
     	processCenterList(getCenterList());
+    	LOGGER.info("Cowin API invoked for Pincodes : "+PinCodes.pinCodes+"\n");
 	}
 	
 	/**

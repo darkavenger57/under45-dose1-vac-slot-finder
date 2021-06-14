@@ -77,8 +77,6 @@ public class VacSlotApiAccessBuilder {
 				masterCenterList.addAll(response.getBody().getCenters());
 			}
 		}
-		
-		LOGGER.info("Cowin API invoked for Pincodes : "+PinCodes.pinCodes+"\n");
 		return masterCenterList; 
 	}
 	
