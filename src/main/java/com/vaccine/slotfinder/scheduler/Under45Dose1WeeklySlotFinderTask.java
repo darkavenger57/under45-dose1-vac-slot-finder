@@ -73,7 +73,7 @@ public class Under45Dose1WeeklySlotFinderTask {
 	 * The Cron expression can be put in a props file also
 	 */
     
-    @Scheduled(cron = "*/20 * * * * *")
+    @Scheduled(cron = "*/18 * * * * *")
 	public void invokeSlotFinder() {
 
     	processCenterList(getCenterList());
