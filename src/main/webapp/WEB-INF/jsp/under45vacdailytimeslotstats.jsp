@@ -55,9 +55,9 @@
     categoryAxis.renderer.grid.template.location = 0;
     categoryAxis.dataFields.category = "time_of_day_str";
     categoryAxis.renderer.minGridDistance = 15;
-    categoryAxis.renderer.grid.template.location = 0.5;
+   /* categoryAxis.renderer.grid.template.location = 0.5;
     categoryAxis.renderer.grid.template.strokeDasharray = "1,3";
-    categoryAxis.renderer.labels.template.rotation = -90;
+    categoryAxis.renderer.labels.template.rotation = -90; */
     categoryAxis.renderer.labels.template.horizontalCenter = "left";
     categoryAxis.renderer.labels.template.location = 0.5;
     categoryAxis.title.text ="[bold red font-size:20px]Detected Time[/]   of   Day (24 Hr format)";
