@@ -18,7 +18,7 @@
     %>
    
     <h3>
-    	Under 45 Vaccine availability daily detailed Stats <br> Dose : <u><%=dose%></u>
+    	Under 45 Vaccine availability daily detailed Stats <br> Dose : <u><%=dose%></u> <br> Detection date :<%=date%>
     </h3>
    	
     <!-- Resources -->
@@ -56,7 +56,7 @@
     // Create axes
     var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
 	dateAxis.dateFormatter.dateFormat = "yyyy-MM-dd";
-	dateAxis.title.text="[bold font-size:20px]Availability Dates[/](as of "+jsdate+")";
+	dateAxis.title.text="[bold font-size:20px]Availability Dates[/]";
 	dateAxis.gridIntervals.setAll([
         { timeUnit: "day", count: 1 },
         { timeUnit: "day", count: 1 }
@@ -64,7 +64,7 @@
 	
 	var valueAxis = chart.yAxes.push(new am4charts.DurationAxis());
 	valueAxis.baseUnit = "minute";
-	valueAxis.durationFormatter.durationFormat = "hh'h' mm'min'";
+	valueAxis.durationFormatter.durationFormat = "hh'h' mm'min' ss'sec'";
 	valueAxis.title.text = "[bold red font-size:20px]Detected Time[/]   of   Day (24 Hr format)";
 	
 	// Create series

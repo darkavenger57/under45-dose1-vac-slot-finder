@@ -17,7 +17,7 @@
     %>
    
     <h3>
-    	Under 45 Vaccine availability TimeSlot based Stats <br> Dose : <u><%=dose%></u>
+    	Under 45 Vaccine availability TimeSlot based Stats <br> Dose : <u><%=dose%></u> <br> Detection date :<%=date%>
     </h3>
    	
     <!-- Resources -->
