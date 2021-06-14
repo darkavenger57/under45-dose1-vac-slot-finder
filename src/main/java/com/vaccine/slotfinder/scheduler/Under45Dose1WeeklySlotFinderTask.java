@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -22,7 +21,6 @@ import com.vaccine.slotfinder.service.Under45DataService;
 import com.vaccine.slotfinder.util.CalendarAvailabilityPredicates;
 import com.vaccine.slotfinder.util.TelegramNotifier;
 import com.vaccine.slotfinder.util.VacSlotApiAccessBuilder;
-
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -77,9 +75,8 @@ public class Under45Dose1WeeklySlotFinderTask {
     
     @Scheduled(cron = "*/20 * * * * *")
 	public void invokeSlotFinder() {
-		
-		List<Center> centerList = getCenterList();
-		processCenterList(centerList);
+
+    	processCenterList(getCenterList());
 	}
 	
 	/**
